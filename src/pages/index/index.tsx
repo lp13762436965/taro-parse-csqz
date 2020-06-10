@@ -1,5 +1,5 @@
-import Taro, {Component, Config} from '@tarojs/taro'
-import {View} from '@tarojs/components'
+import Taro, { Component, Config } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import './index.scss'
 import TaroParser from "../../index";
 import markdown from "./markdown";
@@ -14,14 +14,14 @@ export default class Index extends Component {
     addGlobalClass: true
   }
 
-  imgClick = (src, imgList) => {
-    Taro.previewImage({urls: imgList, current: src}).then(() => {
+  onImgClick = (src) => {
+    Taro.previewImage({ urls: src }).then(() => {
     })
   }
 
   linkClick = (href) => {
-    Taro.setClipboardData({data: href}).then(() => {
-      Taro.showToast({title: '链接已复制'}).then(() => {
+    Taro.setClipboardData({ data: href }).then(() => {
+      Taro.showToast({ title: '链接已复制' }).then(() => {
       })
     })
 
@@ -32,9 +32,8 @@ export default class Index extends Component {
     return (
       <View className='index'>
         <TaroParser
-          type='markdown'
           theme='light'
-          onImgClick={this.imgClick}
+          onImgClick={this.onImgClick}
           onLinkClick={this.linkClick}
           yumlApi='https://md.werfei.com/?yuml'
           latexApi='https://md.werfei.com/?tex'

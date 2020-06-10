@@ -1,15 +1,14 @@
-import {Component} from '@tarojs/taro'
-import {Image} from '@tarojs/components'
-import {Props,State} from 'types/Img'
-import {styleToObj} from "../../utils/dom";
+import { Component } from '@tarojs/taro'
+import { Image } from '@tarojs/components'
+import { Props, State } from 'types/Img'
 import config from '../../utils/config'
 
 export default class Img extends Component<Props, State> {
 
   state = {
     size: {
-      w: 0,
-      h: 0
+      width: 0,
+      height: 0
     },
     attr: {
       className: '',
@@ -19,22 +18,18 @@ export default class Img extends Component<Props, State> {
   }
 
   componentWillMount(): void {
-    const {data} = this.props
+    const { data } = this.props
     if (!data) {
       return
     }
-    const style = styleToObj(data.attr && data.attr.style ? data.attr.style : '')
-    const size = {
-      w: 0,
-      h: 0
-    }
-    if (style.width) {
-      size.w = parseInt(style.width)
-      size.h = parseInt(style.height)
+    //获取图片的宽高
+    Taro.getImageInfo({
+      src: data.attr.src,
+    }).then((res: { width: number, height: number }) => {
       this.setState({
-        size: size
+        size: res
       })
-    }
+    })
     // 设置公式图片
     this.setState({
       attr: {
@@ -49,32 +44,23 @@ export default class Img extends Component<Props, State> {
   }
 
   imgClick = (src) => {
-    if(this.props.onImgClick){
+    if (this.props.onImgClick) {
       this.props.onImgClick(src)
     }
   }
 
   render() {
-    const {attr, size} = this.state
-    const {data} = this.props
-    let style
-    if (data) {
-      style = styleToObj(data.attr && data.attr.style ? data.attr.style : '')
-      if (size.w > 0 && size.h > 0) {
-        style.width = size.w + 'em'
-        style.height = size.h + 'em'
-      }
-      style.fontSize = 'inherit'
-    }
+    const { attr, size } = this.state
+    const { width, height } = size;
+    const { data } = this.props
+
     return (
       data && <Image
-        className={config.classPrefix+attr.className}
-        onClick={() => {
-          this.imgClick(attr.src)
-        }}
+        className={config.classPrefix + attr.className}
+        onClick={() => { this.imgClick(attr.src) }}
         lazy-load='true'
         src={attr.src}
-        style={style}
+        style={{ width: `${width}px`, height: `${height}px` }}
       />
     )
   }

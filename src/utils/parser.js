@@ -1,4 +1,3 @@
-import md from './parse/markdown'
 import parse from './parse'
 import config from './config'
 
@@ -15,22 +14,7 @@ function initClass(val) {
 
 export default function (str, type, option) {
   option = option || {};
-  let result;
-  switch (type) {
-    case 'markdown': {
-      result = parse(md(str), option)
-      console.log(result)
-      break
-    }
-    case 'html': {
-      result = parse(str, option)
-      break
-    }
-    default: {
-      throw new Error('Invalid type, only markdown and html are supported')
-    }
-  }
+  const result = parse(str, option);
   initClass(result)
-  console.log(result)
   return result
 }

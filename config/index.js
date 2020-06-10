@@ -1,6 +1,6 @@
 const config = {
-  projectName: 'taro-parse',
-  date: '2020-3-3',
+  projectName: 'taro-parse-csqz',
+  date: '2020-6-9',
   designWidth: 750,
   deviceRatio: {
     '640': 2.34 / 2,

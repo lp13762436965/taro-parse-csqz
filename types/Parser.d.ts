@@ -1,8 +1,7 @@
-import {Data} from "./Data"
+import { Data } from "./Data"
 
 export interface Props {
   content: string,
-  type: 'markdown' | 'html',
   onImgClick?: Function
   onLinkClick?: Function,
   latexApi?: string,

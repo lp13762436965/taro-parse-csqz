@@ -1,8 +1,7 @@
-import {ComponentClass} from 'react'
+import { ComponentClass } from 'react'
 
 export interface TaroParserProps {
   content: string,
-  type: 'markdown' | 'html',
   onImgClick?: Function
   onLinkClick?: Function,
   latexApi?: string,
