@@ -1,6 +1,6 @@
 {
   "name": "taro-parse-csqz",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "description": "taro版本的微信富文本解析器",
   "main": "dist/index.js",
