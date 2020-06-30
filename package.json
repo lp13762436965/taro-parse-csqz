@@ -1,6 +1,6 @@
 {
   "name": "taro-parse-csqz",
-  "version": "1.0.3",
+  "version": "1.0.9",
   "private": false,
   "description": "taro版本的微信富文本解析器",
   "main": "dist/index.js",
@@ -26,7 +26,7 @@
     "dev:h5": "npm run build:h5 -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
     "dev:quickapp": "npm run build:quickapp -- --watch",
-    "build:component": "cross-env TARO_BUILD_TYPE=ui taro build --ui",
+    "build": "cross-env TARO_BUILD_TYPE=ui taro build --ui",
     "clean": "rimraf .temp dist coverage"
   },
   "license": "MIT",
@@ -90,5 +90,8 @@
     "url": "https://github.com/lp13762436965/taro-parse-csqz/issues"
   },
   "author": "lp13762436965 <https://github.com/lp13762436965>",
-  "homepage": "https://github.com/lp13762436965/taro-parse-csqz#readme"
+  "homepage": "https://github.com/lp13762436965/taro-parse-csqz#readme",
+  "dependencies": {
+    "taro-parse-csqz": "^1.0.9"
+  }
 }

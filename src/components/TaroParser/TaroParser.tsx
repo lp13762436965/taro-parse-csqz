@@ -12,10 +12,8 @@ export default class TaroParser extends Component<Props, State> {
     addGlobalClass: true
   }
 
-  imgClick = (src, imgList) => {
-    if (this.props.onImgClick) {
-      this.props.onImgClick(src, imgList)
-    }
+  imgClick = (src) => {
+    Taro.previewImage({ urls: [src] })
   }
 
   linkClick = (href) => {
@@ -35,7 +33,7 @@ export default class TaroParser extends Component<Props, State> {
         <View className={config.classPrefix + 'h2w__main'}>
           {nodes &&
             <Decode latexApi={latexApi} yumlApi={yumlApi} onImgClick={(src) => {
-              this.imgClick(src, imgList)
+              this.imgClick(src)
             }} onLinkClick={this.linkClick}
               nodes={nodes}
             />}
